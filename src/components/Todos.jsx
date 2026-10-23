@@ -4,6 +4,7 @@ function Todos() {
 
   const [text, setText] = useState('')
   const [todos, setTodos] = useState([])
+  const activeCount = todos.filter((todo) => !todo.completed).length
 
 function handleSubmit(e) {
     e.preventDefault()
@@ -47,7 +48,7 @@ function handleSubmit(e) {
         </form>
 
         {todos.length > 0 && (
-+          <>
+          <>
 
          <main className="relative border-t border-[#e6e6e6]">
           <input id="toggle-all" type="checkbox" className="peer sr-only" />
@@ -93,8 +94,8 @@ function handleSubmit(e) {
         </main>
  
         <footer className="grid h-10 grid-cols-3 items-center border-t border-[#e6e6e6] px-[15px] text-[15px]">
-          <span>
-            <strong className="font-light">1</strong> item left
+          <span>  
+            <strong className="font-light">{activeCount}</strong>{' '}  {activeCount === 1 ? 'item' : 'items'} left
           </span>
 
           <ul className="flex justify-center gap-1">
